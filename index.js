@@ -3,8 +3,9 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const connectDB = require("./config/db");
-const multer = require("multer");
 const authRoutes = require("./routes/auth");
+const contactRoutes = require("./routes/contacts");
+const protect = require("./middlewares/auth");
 
 //Config
 const app = express();
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 //Routes
 app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/contact", protect, contactRoutes);
 
 //Database Connection
 connectDB();

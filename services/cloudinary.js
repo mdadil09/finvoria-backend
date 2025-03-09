@@ -12,7 +12,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "EasePulse",
+    folder: "Finvoria",
     allowedFormats: ["jpeg", "png", "jpg"],
   },
 });
