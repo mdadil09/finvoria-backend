@@ -38,4 +38,22 @@ async function sendVerificationEmail(email, otp) {
   }
 }
 
-module.exports = { sendEmail, sendVerificationEmail };
+async function sendWalletVerificationEmail(email, otp) {
+  try {
+    const mailResponse = await sendEmail(
+      email,
+      "Verification Email",
+      `<h1>Please confirm your OTP for wallet verification</h1>
+       <p>Here is your OTP code: ${otp}</p>`
+    );
+  } catch (error) {
+    console.log("Error occurred while sending email: ", error);
+    throw error;
+  }
+}
+
+module.exports = {
+  sendEmail,
+  sendVerificationEmail,
+  sendWalletVerificationEmail,
+};

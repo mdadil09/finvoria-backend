@@ -6,6 +6,8 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/auth");
 const contactRoutes = require("./routes/contacts");
 const protect = require("./middlewares/auth");
+const bankRoutes = require("./routes/bank");
+const paymentMethodRoutes = require("./routes/paymentMethod");
 
 //Config
 const app = express();
@@ -18,6 +20,8 @@ app.use(bodyParser.json());
 //Routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/contact", protect, contactRoutes);
+app.use("/api/v1/bank", protect, bankRoutes);
+app.use("/api/v1/payment-method", protect, paymentMethodRoutes);
 
 //Database Connection
 connectDB();
